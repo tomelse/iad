@@ -47,10 +47,10 @@ libiad.dll: $(AD_OBJ) $(IAD_OBJ) $(NR_OBJ) libiad.h version.o
 	$(CC) -shared -o libiad.dll $(AD_OBJ) $(IAD_OBJ) $(NR_OBJ) version.o
 
 libiad.h : ad_prime.w iad_pub.w ad_cone.w ad_layers.w
-	cd src ; ctangle -bhp ad_prime
-	cd src ; ctangle -bhp iad_pub
-	cd src ; ctangle -bhp ad_cone
-	cd src ; ctangle -bhp ad_layers
+	ctangle -bhp ad_prime
+	ctangle -bhp iad_pub
+	ctangle -bhp ad_cone
+	ctangle -bhp ad_layers
 	cat lib_ad.h lib_iad.h ad_cone_ez.h ad_layers.h > libiad.tmp
 	./cobweb.pl < libiad.tmp > libiad.tmp2
 	$(INDENT) $(INDENT_OPT) < libiad.tmp2 > libiad.h
